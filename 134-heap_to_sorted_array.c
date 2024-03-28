@@ -11,7 +11,7 @@ size_t tree_size(const binary_tree_t *tree)
 	size_t height_l = 0;
 	size_t height_r = 0;
 
-	if (!tree)
+	if (tree == NULL)
 		return (0);
 
 	if (tree->left)
@@ -26,17 +26,17 @@ size_t tree_size(const binary_tree_t *tree)
 /**
  * heap_to_sorted_array - converts a Binary Max Heap
  * to a sorted array of integers
+ * @heap: a pointer to the root node of the heap to convert
+ * @size: an address to store the size of the array
  *
- * @heap: pointer to the root node of the heap to convert
- * @size: address to store the size of the array
- *
- * Return: pointer to array sorted in descending order
- **/
+ * Return: the generated array
+ *         NULL on failure
+ */
 int *heap_to_sorted_array(heap_t *heap, size_t *size)
 {
 	int i, *a = NULL;
 
-	if (!heap || !size)
+	if (heap == NULL || size == NULL)
 		return (NULL);
 
 	*size = tree_size(heap) + 1;
